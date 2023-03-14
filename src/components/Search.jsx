@@ -15,6 +15,8 @@ function Search({ query }) {
 
 //   return <div>{query && navigate("/results", { state: { results } })}</div>;
 
+//test
+
    return <div>{query && navigate("/results", { state: { results: results, query: query } })} </div>
 
 }
