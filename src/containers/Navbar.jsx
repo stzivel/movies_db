@@ -4,58 +4,36 @@ import { Link } from "react-router-dom";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import Search from "../components/Search";
 
-
 function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
 
-  const [query, setQuery] = useState('');
- 
-    
- 
+  const [query, setQuery] = useState("");
 
   const handleToggle = () => {
     setToggleMenu(!toggleMenu);
   };
 
-  const handleChange = (e)=>{
-   
+  const handleChange = (e) => {
     setQuery(e.target.value);
-  }
-
-
+  };
 
   return (
     <div className="navbar flex items-center justify-between p-4 z-[100] w-full absolute ">
-      
-      <Link to='/'>
+      <Link to="/">
         <h1 className="text-red-600 text-4xl font-bold cursor-pointer">
           MOVIES-DB
         </h1>
       </Link>
-      
 
-<input
-                onChange={handleChange}
-                className='p-3 my-2 bg-gray-700 rouded'
-                type='search'
-                placeholder='Search'
-                autoComplete='search'
-              />
+      <input
+        onChange={handleChange}
+        className="p-3  my-2 bg-gray-700 rouded"
+        type="search"
+        placeholder="Search"
+        autoComplete="search"
+      />
 
-              <Search query = {query}/> 
-
-               
-    
-              
-                
-                
-              
-
-              
-
-
-
-      
+      <Search query={query} />
 
       <div onClick={handleToggle} className="navbar__menu relative z-999 ">
         {toggleMenu ? (
@@ -72,16 +50,13 @@ function Navbar() {
           }
         >
           <li className="text-red-600 font-bold  p-4 border-b border-gray-600">
-            Home
+            Top 10 Movies
           </li>
           <li className=" text-red-600 font-bold  p-4 border-b border-gray-600">
-            Company
+            Top 10 Series
           </li>
           <li className=" text-red-600 font-bold  p-4 border-b border-gray-600">
-            Resources
-          </li>
-          <li className=" text-red-600 font-bold  p-4 border-b border-gray-600">
-            About
+            Genres
           </li>
           
         </ul>
