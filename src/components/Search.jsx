@@ -7,11 +7,23 @@ function Search({ query }) {
   const [results, setResults] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios.get(requests.requestSearch + query).then((response) => {
-      setResults(response.data.results);
+  // useEffect(() => {
+  //   axios.get(requests.requestSearch + query).then((response) => {
+  //     setResults(response.data.results);
+  //   });
+  // }, [query]);
+
+    useEffect(() => { 
+      const timer = setTimeout(()=>{
+        axios.get(requesst.requestSearch + query).then((response) => {
+          setResults(response.data.results);
+      },10000);
+      return ()=>clearTimeout(timer);
+    
     });
-  }, [query]);
+   }, [query]);
+
+
 
 //   return <div>{query && navigate("/results", { state: { results } })}</div>;
 

@@ -9,6 +9,7 @@ function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
 
   const [query, setQuery] = useState('');
+  const [finalQuery, setFinalQuery] = useState(query);
  
     
  
@@ -21,6 +22,15 @@ function Navbar() {
    
     setQuery(e.target.value);
   }
+
+  const handleClick = (e)=>{
+
+    setFinalQuery(query);
+
+  }
+
+ console.log("query: " + query);
+ console.log("final: " + finalQuery);
 
 
 
@@ -42,7 +52,9 @@ function Navbar() {
                 autoComplete='search'
               />
 
-              <Search query = {query}/> 
+              <button onClick={handleClick}>Search</button>
+
+              <Search query = {finalQuery}/> 
 
                
     
