@@ -12,7 +12,7 @@ function Navbar() {
   };
 
   return (
-    <div className="navbar flex flex-col md:flex-row items-center justify-between p-4 z-[100] w-full absolute ">
+    <div className="navbar flex  items-center justify-between p-4 z-[100] w-full absolute ">
       <Link to="/">
         <h1 className="text-red-600 text-4xl font-bold cursor-pointer">
           MOVIES-DB
@@ -36,17 +36,9 @@ function Navbar() {
           }
         >
           <li className="text-red-600 font-bold  p-4 border-b border-gray-600">
-            Home
+            Create movie list
           </li>
-          <li className=" text-red-600 font-bold  p-4 border-b border-gray-600">
-            Company
-          </li>
-          <li className=" text-red-600 font-bold  p-4 border-b border-gray-600">
-            Resources
-          </li>
-          <li className=" text-red-600 font-bold  p-4 border-b border-gray-600">
-            About
-          </li>
+          
         </ul>
       </div>
     </div>
