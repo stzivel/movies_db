@@ -3,22 +3,61 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import requests from "../Request";
 
-function Search({ query }) {
+function Search() {
+  const [searchInput, setSearchInput] = useState("");
   const [results, setResults] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(requests.requestSearch + query).then((response) => {
-      setResults(response.data.results);
-    });
-  }, [query]);
+    const search = async () => {
+      try {
+        await axios
+          .get(requests.requestSearch + searchInput)
+          .then((response) => {
+            setResults(response.data.results);
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-//   return <div>{query && navigate("/results", { state: { results } })}</div>;
+    if (searchInput) {
+      const timer = setTimeout(()=>{
+        search();
 
-//test
+      },5000);
 
-   return <div>{query && navigate("/results", { state: { results: results, query: query } })} </div>
+      return () => clearTimeout(timer);
+     
+    }
+  }, [searchInput]);
 
+  const searchMovies = (searchValue) => {
+    setSearchInput(searchValue);
+  };
+
+  
+  console.log(results);
+
+  return (
+    <div>
+      <input
+        onChange={(e) => searchMovies(e.target.value)}
+        className="p-2 w-[180px] sm:w-[240px] md:w-[300px] lg:w-[360px]  my-2 bg-gray-700 rouded text-white text-sm md:text-lg"
+        type="search"
+        placeholder="Search"
+        autoComplete="search"
+      />
+
+      {
+        searchInput &&
+          navigate("/results", {
+            state: { results: results, searchInput: searchInput },
+          })
+        //   return <div>{query && navigate("/results", { state: { results } })}</div>;
+      }
+    </div>
+  );
 }
 
 export default Search;

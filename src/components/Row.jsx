@@ -7,10 +7,20 @@ function Row({title, fetchURL, movieNumber}) {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    axios.get(fetchURL).then((response) => {
-      setMovies(response.data.results);
-    });
+
+    const getMovies = async () =>{
+      await axios.get(fetchURL).then((response) => {
+        setMovies(response.data.results);
+      });
+
+      
+    }
+
+    getMovies();
+    
   }, [fetchURL]);
+
+  console.log(movies);
 
   const getRandomMovies = (array, num) => {
     const shuffled = [...array].sort(() => 0.5 - Math.random());

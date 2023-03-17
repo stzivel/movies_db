@@ -4,58 +4,22 @@ import { Link } from "react-router-dom";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import Search from "../components/Search";
 
-
 function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
-
-  const [query, setQuery] = useState('');
- 
-    
- 
 
   const handleToggle = () => {
     setToggleMenu(!toggleMenu);
   };
 
-  const handleChange = (e)=>{
-   
-    setQuery(e.target.value);
-  }
-
-
-
   return (
-    <div className="navbar flex items-center justify-between p-4 z-[100] w-full absolute ">
-      
-      <Link to='/'>
+    <div className="navbar flex flex-col md:flex-row items-center justify-between p-4 z-[100] w-full absolute ">
+      <Link to="/">
         <h1 className="text-red-600 text-4xl font-bold cursor-pointer">
           MOVIES-DB
         </h1>
       </Link>
-      
 
-<input
-                onChange={handleChange}
-                className='p-3 my-2 bg-gray-700 rouded'
-                type='search'
-                placeholder='Search'
-                autoComplete='search'
-              />
-
-              <Search query = {query}/> 
-
-               
-    
-              
-                
-                
-              
-
-              
-
-
-
-      
+      <Search />
 
       <div onClick={handleToggle} className="navbar__menu relative z-999 ">
         {toggleMenu ? (
@@ -83,7 +47,6 @@ function Navbar() {
           <li className=" text-red-600 font-bold  p-4 border-b border-gray-600">
             About
           </li>
-          
         </ul>
       </div>
     </div>
@@ -92,14 +55,3 @@ function Navbar() {
 
 export default Navbar;
 
-{
-  /* <input
-                onChange={(e) => setSearch(e.target.value)}
-                className='p-3 my-2 bg-gray-700 rouded'
-                type='search'
-                placeholder='Search'
-                autoComplete='search'
-              />
-
-              {console.log(search)} */
-}
