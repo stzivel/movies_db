@@ -4,12 +4,10 @@ import { Link } from "react-router-dom";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import Search from "../components/Search";
 
-
 function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
 
   const [query, setQuery] = useState('');
-  const [finalQuery, setFinalQuery] = useState(query);
  
     
  
@@ -23,21 +21,11 @@ function Navbar() {
     setQuery(e.target.value);
   }
 
-  const handleClick = (e)=>{
-
-    setFinalQuery(query);
-
-  }
-
- console.log("query: " + query);
- console.log("final: " + finalQuery);
-
 
 
   return (
-    <div className="navbar flex items-center justify-between p-4 z-[100] w-full absolute ">
-      
-      <Link to='/'>
+    <div className="navbar flex  items-center justify-between p-4 z-[100] w-full absolute ">
+      <Link to="/">
         <h1 className="text-red-600 text-4xl font-bold cursor-pointer">
           MOVIES-DB
         </h1>
@@ -52,9 +40,7 @@ function Navbar() {
                 autoComplete='search'
               />
 
-              <button onClick={handleClick}>Search</button>
-
-              <Search query = {finalQuery}/> 
+              <Search query = {query}/> 
 
                
     
@@ -84,16 +70,7 @@ function Navbar() {
           }
         >
           <li className="text-red-600 font-bold  p-4 border-b border-gray-600">
-            Home
-          </li>
-          <li className=" text-red-600 font-bold  p-4 border-b border-gray-600">
-            Company
-          </li>
-          <li className=" text-red-600 font-bold  p-4 border-b border-gray-600">
-            Resources
-          </li>
-          <li className=" text-red-600 font-bold  p-4 border-b border-gray-600">
-            About
+            Create movie list
           </li>
           
         </ul>
@@ -104,14 +81,3 @@ function Navbar() {
 
 export default Navbar;
 
-{
-  /* <input
-                onChange={(e) => setSearch(e.target.value)}
-                className='p-3 my-2 bg-gray-700 rouded'
-                type='search'
-                placeholder='Search'
-                autoComplete='search'
-              />
-
-              {console.log(search)} */
-}
