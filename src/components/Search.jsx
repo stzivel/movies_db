@@ -8,25 +8,6 @@ function Search() {
   const [results, setResults] = useState([]);
   const navigate = useNavigate();
 
-<<<<<<< HEAD
-  // useEffect(() => {
-  //   axios.get(requests.requestSearch + query).then((response) => {
-  //     setResults(response.data.results);
-  //   });
-  // }, [query]);
-
-    useEffect(() => { 
-      const timer = setTimeout(()=>{
-        axios.get(requesst.requestSearch + query).then((response) => {
-          setResults(response.data.results);
-      },10000);
-      return ()=>clearTimeout(timer);
-    
-    });
-   }, [query]);
-
-
-=======
   useEffect(() => {
     const search = async () => {
       try {
@@ -39,16 +20,13 @@ function Search() {
         console.log(error);
       }
     };
->>>>>>> ui
 
     if (searchInput) {
-      const timer = setTimeout(()=>{
+      const timer = setTimeout(() => {
         search();
-
-      },5000);
+      }, 5000);
 
       return () => clearTimeout(timer);
-     
     }
   }, [searchInput]);
 
@@ -56,7 +34,6 @@ function Search() {
     setSearchInput(searchValue);
   };
 
-  
   console.log(results);
 
   return (
@@ -69,13 +46,10 @@ function Search() {
         autoComplete="search"
       />
 
-      {
-        searchInput &&
-          navigate("/results", {
-            state: { results: results, searchInput: searchInput },
-          })
-        //   return <div>{query && navigate("/results", { state: { results } })}</div>;
-      }
+      {searchInput &&
+        navigate("/results", {
+          state: { results: results, searchInput: searchInput },
+        })}
     </div>
   );
 }
