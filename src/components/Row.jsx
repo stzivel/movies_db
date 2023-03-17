@@ -36,7 +36,7 @@ function Row({title, fetchURL, movieNumber}) {
       </h1>
 
       <div className="row__content relative flex  flex-wrap items-center  justify-center">
-        {randomMovies.map((movie, id) => (
+        {randomMovies.map((movie) => (
 
             <Movie movie={movie}/>
          

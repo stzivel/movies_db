@@ -15,7 +15,6 @@ function Movie({ movie }) {
 
   return (
     <div className="movie">
-
       {movie?.backdrop_path && (
         <div className=" row__content-movie w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2">
           <img
@@ -26,7 +25,12 @@ function Movie({ movie }) {
           <div className="row__content-movie-title absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 text-white ">
             <p className="white-space-normal text-xs md:text-sm font-bold flex-col flex justify-center items-center h-full text-center">
               {movie?.title}
-              <button className="bg-red-600 px-2 py-1 font-bold border-0 rounded my-2 text-xs md:text-sm text-black"onClick={handleInfoBox}>Movie Info</button>
+              <button
+                className="bg-red-600 px-2 py-1 font-bold border-0 rounded my-2 text-xs md:text-sm text-black"
+                onClick={handleInfoBox}
+              >
+                Movie Info
+              </button>
             </p>
           </div>
 
@@ -50,28 +54,28 @@ function Movie({ movie }) {
                     </div>
                     {/*body*/}
                     <div className="row__content-movie-info_container-content_body relative  p-4 md:p-6 flex-auto">
-                      
-                      <h4 className="text-red-600 text-xl font-bold">Overview</h4>
+                      <h4 className="text-red-600 text-xl font-bold">
+                        Overview
+                      </h4>
                       <p className="my-4 text-white text-sm md:text-lg ">
-                      {movie?.overview}
+                        {movie?.overview}
                       </p>
 
-                      <h4 className="text-red-600 text-sm md:text-base font-bold">Release date:  
-                      <span className="text-white text-sm md:text-base"> {movie?.release_date}</span> </h4>
-                      <h4 className="text-red-600 text-sm md:text-base font-bold">Vote average:  
-                      <span className="text-white text-xs md:text-sm font-['Poppins'] "> {movie?.vote_average}</span> </h4>
-
-
-
-
-
-
-
-
+                      <h4 className="text-red-600 text-sm md:text-base font-bold">
+                        Release date:
+                        <span className="text-white text-sm md:text-base">
+                          {" "}
+                          {movie?.release_date}
+                        </span>{" "}
+                      </h4>
+                      <h4 className="text-red-600 text-sm md:text-base font-bold">
+                        Vote average:
+                        <span className="text-white text-xs md:text-sm font-['Poppins'] ">
+                          {" "}
+                          {movie?.vote_average}
+                        </span>{" "}
+                      </h4>
                     </div>
-                    
-
-                    
                   </div>
                 </div>
               </div>

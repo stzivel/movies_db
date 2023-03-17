@@ -3,6 +3,9 @@ import { ImSearch } from "react-icons/im";
 import { Link } from "react-router-dom";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import Search from "../components/Search";
+import requests from "../Request";
+import axios from "axios";
+import Genres from "../components/Genres";
 
 function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -21,9 +24,8 @@ function Navbar() {
     setQuery(e.target.value);
   }
 
-
-
-  return (
+  
+return (
     <div className="navbar flex  items-center justify-between p-4 z-[100] w-full absolute ">
       <Link to="/">
         <h1 className="text-red-600 text-4xl font-bold cursor-pointer">
@@ -32,30 +34,14 @@ function Navbar() {
       </Link>
       
 
-<input
-                onChange={handleChange}
-                className='p-3 my-2 bg-gray-700 rouded'
-                type='search'
-                placeholder='Search'
-                autoComplete='search'
-              />
 
-              <Search query = {query}/> 
+
+              <Search/> 
+
+              <Genres/>
 
                
-    
-              
-                
-                
-              
-
-              
-
-
-
-      
-
-      <div onClick={handleToggle} className="navbar__menu relative z-999 ">
+<div onClick={handleToggle} className="navbar__menu relative z-999 ">
         {toggleMenu ? (
           <RiCloseLine size={26} color={"red"} />
         ) : (
@@ -70,7 +56,7 @@ function Navbar() {
           }
         >
           <li className="text-red-600 font-bold  p-4 border-b border-gray-600">
-            Create movie list
+           {/* <Genres/> */}
           </li>
           
         </ul>
