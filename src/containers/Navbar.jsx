@@ -1,69 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { ImSearch } from "react-icons/im";
 import { Link } from "react-router-dom";
-import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import Search from "../components/Search";
-import requests from "../Request";
-import axios from "axios";
-import Genres from "../components/Genres";
 
 function Navbar() {
-  const [toggleMenu, setToggleMenu] = useState(false);
-
-  const [query, setQuery] = useState('');
- 
-    
- 
-
-  const handleToggle = () => {
-    setToggleMenu(!toggleMenu);
-  };
-
-  const handleChange = (e)=>{
-   
-    setQuery(e.target.value);
-  }
-
-  
-return (
+  return (
     <div className="navbar flex  items-center justify-between p-4 z-[100] w-full absolute ">
       <Link to="/">
         <h1 className="text-red-600 text-4xl font-bold cursor-pointer">
           MOVIES-DB
         </h1>
       </Link>
-      
 
-
-
-              <Search/> 
-
-              <Genres/>
-
-               
-<div onClick={handleToggle} className="navbar__menu relative z-999 ">
-        {toggleMenu ? (
-          <RiCloseLine size={26} color={"red"} />
-        ) : (
-          <RiMenu3Line size={26} color={"red"} />
-        )}
-
-        <ul
-          className={
-            toggleMenu
-              ? "fixed right-0 top-0 w-[20%] h-full border-r border-r-gray-900 bg-[#000300]/80 ease-in-out duration-500"
-              : "ease-in-out duration-500 fixed right-[-100%]"
-          }
-        >
-          <li className="text-red-600 font-bold  p-4 border-b border-gray-600">
-           {/* <Genres/> */}
-          </li>
-          
-        </ul>
-      </div>
+      <Search />
     </div>
   );
 }
 
 export default Navbar;
-

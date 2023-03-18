@@ -3,21 +3,17 @@ import React, { useState, useEffect } from "react";
 import requests from "../Request";
 import Movie from "./Movie";
 
-function Row({title, fetchURL, movieNumber}) {
+function Row({ title, fetchURL, movieNumber }) {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-
-    const getMovies = async () =>{
+    const getMovies = async () => {
       await axios.get(fetchURL).then((response) => {
         setMovies(response.data.results);
       });
-
-      
-    }
+    };
 
     getMovies();
-    
   }, [fetchURL]);
 
   console.log(movies);
@@ -37,9 +33,7 @@ function Row({title, fetchURL, movieNumber}) {
 
       <div className="row__content relative flex  flex-wrap items-center  justify-center">
         {randomMovies.map((movie) => (
-
-            <Movie movie={movie}/>
-         
+          <Movie movie={movie} />
         ))}
       </div>
     </div>
