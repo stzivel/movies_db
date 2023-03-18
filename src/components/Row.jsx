@@ -3,14 +3,20 @@ import React, { useState, useEffect } from "react";
 import requests from "../Request";
 import Movie from "./Movie";
 
-function Row({title, fetchURL, movieNumber}) {
+function Row({ title, fetchURL, movieNumber }) {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    axios.get(fetchURL).then((response) => {
-      setMovies(response.data.results);
-    });
+    const getMovies = async () => {
+      await axios.get(fetchURL).then((response) => {
+        setMovies(response.data.results);
+      });
+    };
+
+    getMovies();
   }, [fetchURL]);
+
+  console.log(movies);
 
   const getRandomMovies = (array, num) => {
     const shuffled = [...array].sort(() => 0.5 - Math.random());
@@ -26,10 +32,8 @@ function Row({title, fetchURL, movieNumber}) {
       </h1>
 
       <div className="row__content relative flex  flex-wrap items-center  justify-center">
-        {randomMovies.map((movie, id) => (
-
-            <Movie movie={movie}/>
-         
+        {randomMovies.map((movie) => (
+          <Movie movie={movie} />
         ))}
       </div>
     </div>
