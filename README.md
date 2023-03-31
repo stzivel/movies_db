@@ -1,4 +1,6 @@
-<img src="src\screen-movies.png">
+<img src="screen-movies.png">
+
+screen-movies.png
 
 # A movies database site
 
