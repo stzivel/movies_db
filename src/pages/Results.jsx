@@ -40,7 +40,7 @@ function Results() {
     <div className="results w-full h-full py-28 ">
       <div className="results__container  w-full h-full">
         <h1 className="text-3xl font-bold text-red-600 flex justify-center items-center my-4">
-          Results for: {query}
+          Results for: {searchInput}
         </h1>
 
       <div className="results__content relative flex  flex-wrap items-center  justify-center">
