@@ -1,6 +1,5 @@
 <img src="screen-movies.png">
 
-screen-movies.png
 
 # A movies database site
 
