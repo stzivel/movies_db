@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import requests from "../Request";
 import Movie from "./Movie";
 
 function Row({ title, fetchURL, movieNumber }) {

@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { WatchlistContext } from "../context/WatchlistContext";
 
 function Movie({ movie }) {
+  const { addMovieToWatchlist, removeMovieFromWatchlist, watchlist } =
+    useContext(WatchlistContext);
   const [infoBox, setInfoBox] = useState(false);
+  const [like, setLike] = useState(false);
 
   const handleInfoBox = () => {
     setInfoBox(true);
@@ -13,6 +18,17 @@ function Movie({ movie }) {
     console.log("Info box closed");
   };
 
+  let storedMovie = watchlist.find((o) => o.id === movie.id);
+
+  const handleWatchlist = () => {
+    if (like && storedMovie) {
+      removeMovieFromWatchlist(movie.id);
+      setLike(false);
+    } else {
+      addMovieToWatchlist(movie);
+      setLike(true);
+    }
+  };
   return (
     <div className="movie">
       {movie?.backdrop_path && (
@@ -23,6 +39,16 @@ function Movie({ movie }) {
             alt=""
           />
           <div className="row__content-movie-title absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 text-white ">
+            {like ? (
+              <AiFillHeart size={20} color={"red"} onClick={handleWatchlist} />
+            ) : (
+              <AiOutlineHeart
+                size={20}
+                color={"red"}
+                onClick={handleWatchlist}
+              />
+            )}
+
             <p className="white-space-normal text-xs md:text-sm font-bold flex-col flex justify-center items-center h-full text-center">
               {movie?.title}
               <button
@@ -38,9 +64,7 @@ function Movie({ movie }) {
             <>
               <div className="row__content-movie-info justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                 <div className=" row__content-movie-info_container relative w-auto my-6 mx-auto max-w-xs sm: md:max-w-xl">
-                  
                   <div className=" row__content-movie-info_container-content border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-black/90 outline-none focus:outline-none">
-                    
                     <div className=" row__content-movie-info_container-content_header flex items-start justify-between p-3 border-b border-solid border-slate-200 rounded-t bg-red-600/90">
                       <h3 className="text-2xl font-semibold">{movie?.title}</h3>
                       <button
@@ -52,7 +76,7 @@ function Movie({ movie }) {
                         </span>
                       </button>
                     </div>
-                    
+
                     <div className="row__content-movie-info_container-content_body relative  p-4 md:p-6 flex-auto">
                       <h4 className="text-red-600 text-xl font-bold">
                         Overview
