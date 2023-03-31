@@ -1,4 +1,4 @@
-const key = process.env.API_KEY;
+const key = 'd1894bc718e940d5b74e9fae3b7f5fc2';
 
 export const BASE_URL = "https://api.themoviedb.org/3";
 
@@ -12,3 +12,5 @@ const requests = {
 };
 
 export default requests;
+
+
