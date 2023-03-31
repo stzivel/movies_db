@@ -1,19 +1,14 @@
-const key = 'd1894bc718e940d5b74e9fae3b7f5fc2';
+const key = process.env.API_KEY;
 
+export const BASE_URL = "https://api.themoviedb.org/3";
 
 const requests = {
-
-    requestPopular: `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`,
-    requestTopRated: `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`,
-    requestTrending: `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=2`,
-    requestHorror: `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=horror&page=1&include_adult=false`,
-    requestUpcoming: `https://api.themoviedb.org/3/movie/upcoming?api_key=${key}&language=en-US&page=1`,
-    requestSearch: `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&page=1&include_adult=false&query=`,
-    
+  requestPopular: `${BASE_URL}/movie/popular?api_key=${key}&language=en-US&page=1`,
+  requestTopRated: `${BASE_URL}/movie/top_rated?api_key=${key}&language=en-US&page=1`,
+  requestTrending: `${BASE_URL}/movie/popular?api_key=${key}&language=en-US&page=2`,
+  requestHorror: `${BASE_URL}/search/movie?api_key=${key}&language=en-US&query=horror&page=1&include_adult=false`,
+  requestUpcoming: `${BASE_URL}/movie/upcoming?api_key=${key}&language=en-US&page=1`,
+  requestSearch: `${BASE_URL}/search/movie?api_key=${key}&language=en-US&page=1&include_adult=false&query=`,
 };
 
-
-
-export default requests
-
-
+export default requests;
